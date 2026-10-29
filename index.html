@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>소문설계 무료 라이브 선물함</title>
+<meta property="og:title" content="소문설계 무료 라이브 선물함">
+<meta property="og:description" content="11월 9일(월) 저녁 8시 · 무료 라이브 참석자 전용 · 비밀번호는 라이브 마지막에 공개됩니다">
+<meta property="og:image" content="https://daviddaniellee89-oss.github.io/somun-gift/og.png">
+<meta property="og:url" content="https://daviddaniellee89-oss.github.io/somun-gift/">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* 금낭비책 선물함 — 검정 바탕·금색 테, 휴대폰 한 손 기준 한 칼럼 */
+:root{--bg:#0d0c0a;--panel:#17150f;--line:rgba(200,154,58,.55);--gold:#c89a3a;--gold-hi:#dcb558;--ink:#f3efe6;--sub:#b9b2a3;--mute:#8a8578;--err:#ff8f7a;--ok:#9fd6a9;
+--serif:"Song Myung","Noto Serif KR",serif;--sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;word-break:keep-all;-webkit-text-size-adjust:100%}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.hero{padding-block:40px 28px;text-align:center;position:relative}
+.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:.24em;padding:4px 12px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,8vw,42px);line-height:1.25;margin:18px 0 8px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .meta{color:var(--sub);font-size:14px}
+.lockbox{margin-top:26px;border:1px solid var(--line);background:var(--panel);padding:20px 18px;text-align:left}
+.lockbox label{display:block;font-weight:700;margin-bottom:8px}
+.row{display:flex;gap:8px}
+.row input{flex:1;min-width:0;font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--line);background:#0b0a08;color:var(--ink);border-radius:2px}
+.row input:focus{outline:2px solid var(--gold);outline-offset:1px}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--gold);color:#16130c;border:0;font-weight:700;padding:12px 18px;border-radius:2px;white-space:nowrap}
+.btn:focus-visible,.ghost:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
+.btn[disabled]{opacity:.6}
+.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:9px 14px;border-radius:2px;font-weight:700;font-size:14px}
+.hint{font-size:13px;color:var(--mute);margin-top:10px}
+.msg{min-height:22px;margin-top:8px;font-size:14px}
+.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
+h2{font-family:var(--serif);font-weight:400;font-size:26px;margin:44px 0 6px}
+.sub{color:var(--sub);font-size:14px;margin:0 0 16px}
+.gifts{display:grid;gap:14px}
+.gift{display:grid;grid-template-columns:92px 1fr;gap:16px;border:1px solid var(--line);background:var(--panel);padding:14px;align-items:center}
+.cover{aspect-ratio:3/4;background:#050504;border:1px solid var(--gold);position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:9px 8px}
+.cover::after{content:"";position:absolute;inset:3px;border:1px solid rgba(200,154,58,.35);pointer-events:none}
+.cover .k{font-size:8px;letter-spacing:.18em;color:var(--gold)}
+.cover .t{font-family:var(--serif);font-size:13px;line-height:1.25}
+.cover .y{font-size:8px;color:var(--mute);letter-spacing:.1em}
+.gift h3{margin:0;font-size:17px;line-height:1.4}
+.gift p{margin:4px 0 10px;color:var(--sub);font-size:14px}
+.acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.locked{font-size:13px;color:var(--mute)}
+.gift.open{border-color:var(--gold)}
+.course{margin-top:44px;border:1px solid var(--gold);padding:24px 20px;background:linear-gradient(180deg,#1d1810,#110f0b)}
+.course h2{margin-top:0}
+.course ul{list-style:none;padding:0;margin:0 0 18px}
+.course li{padding:6px 0;border-bottom:1px solid rgba(200,154,58,.2)}
+.course .btn{display:block;text-align:center;text-decoration:none;font-size:17px;padding:15px}
+.course .note{color:var(--sub);text-align:center;margin:0}
+.closed{border:1px dashed var(--line);padding:16px;color:var(--sub);text-align:center}
+footer{margin-top:40px;color:var(--mute);font-size:12.5px;border-top:1px solid rgba(200,154,58,.25);padding-top:16px}
+/* 보기 창 */
+.viewer{position:fixed;inset:0;background:#0b0a08;z-index:20;display:flex;flex-direction:column}
+.viewer[hidden]{display:none}
+.vbar{display:flex;align-items:center;gap:8px;padding:10px max(12px,env(safe-area-inset-right,0px)) 10px max(12px,env(safe-area-inset-left,0px));padding-top:max(10px,env(safe-area-inset-top,0px));border-bottom:1px solid var(--line);background:var(--panel)}
+.vbar .vt{flex:1;min-width:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px 0 max(24px,env(safe-area-inset-bottom,0px))}
+.vbody canvas{display:block;margin:0 auto 10px;max-width:100%;height:auto;background:#fff}
+.vbody .status{color:var(--sub);text-align:center;padding:30px 16px}
+.plist{max-width:720px;margin:0 auto;padding:0 14px}
+.pitem{border:1px solid var(--line);background:var(--panel);margin-bottom:14px}
+.pitem header{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;padding:12px 14px;border-bottom:1px solid rgba(200,154,58,.25)}
+.pitem h4{margin:0;font-size:16px}.pitem small{display:block;color:var(--mute);font-size:12.5px;margin-top:2px}
+.pitem pre{margin:0;padding:14px;white-space:pre-wrap;word-break:keep-all;font-family:var(--sans);font-size:14px;line-height:1.7;color:var(--ink);max-height:320px;overflow:auto}
+@media (prefers-reduced-motion:no-preference){.gift.open{animation:glow .6s ease both}@keyframes glow{from{box-shadow:0 0 0 0 rgba(220,181,88,.6)}to{box-shadow:0 0 0 10px rgba(220,181,88,0)}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <span class="badge">LIVE 참석자 전용</span>
+    <h1>소문설계<br><em>2027 선물함</em></h1>
+    <div class="meta">11월 9일(월) 저녁 8시 · 무료 라이브 · 제갈현열 작가</div>
+    <div class="lockbox" id="lockbox">
+      <form id="unlock" autocomplete="off">
+        <label for="pw">라이브에서 알려 드린 비밀번호</label>
+        <div class="row"><input id="pw" name="pw" type="text" inputmode="text" placeholder="라이브 마지막에 공개돼요" autocapitalize="off" spellcheck="false"><button class="btn" id="go" type="submit">열기</button></div>
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+        <div class="hint">띄어쓰기와 대소문자는 상관없어요. 카카오톡 안에서 잘 안 되면 오른쪽 위 점 세 개 → 다른 브라우저로 열어 주세요.</div>
+      </form>
+    </div>
+  </header>
+
+  <h2>오늘의 선물 5가지</h2>
+  <p class="sub" id="giftsub">비밀번호를 넣으면 아래 선물이 한꺼번에 열려요.</p>
+  <div class="gifts" id="gifts">
+    <article class="gift" data-gift="g1">
+      <div class="cover" aria-hidden="true"><span class="k">BENEFIT 01</span><span class="t">소문거리 셀프 진단서</span><span class="y">2027</span></div>
+      <div><h3>소문거리 셀프 진단서</h3><p>손님의 목소리 네 가지에서 우리 가게만의 소문거리를 찾는 30분 진단서</p><div class="acts"><span class="locked">🔒 비밀번호를 넣으면 열려요</span></div></div>
+    </article>
+    <article class="gift" data-gift="g2">
+      <div class="cover" aria-hidden="true"><span class="k">BENEFIT 02</span><span class="t">소문거리 발굴 프레임워크</span><span class="y">2027</span></div>
+      <div><h3>소문거리 발굴 프레임워크</h3><p>찾은 소문거리를 손님이 그대로 옮기는 한마디와 장치로 바꾸는 틀</p><div class="acts"><span class="locked">🔒 비밀번호를 넣으면 열려요</span></div></div>
+    </article>
+    <article class="gift" data-gift="g3">
+      <div class="cover" aria-hidden="true"><span class="k">BENEFIT 03</span><span class="t">협업 계약서</span><span class="y">2027</span></div>
+      <div><h3>협업 계약서</h3><p>소문을 처음 옮겨 줄 소수를 찾는 캔버스와 한 장 약속서</p><div class="acts"><span class="locked">🔒 비밀번호를 넣으면 열려요</span></div></div>
+    </article>
+    <article class="gift" data-gift="g4">
+      <div class="cover" aria-hidden="true"><span class="k">BENEFIT 04</span><span class="t">소문확산 운영 대시보드</span><span class="y">2027</span></div>
+      <div><h3>소문확산 운영 대시보드</h3><p>주간표·월간표·아카이브·AI 검색 점검표로 노력을 숫자로 남기기</p><div class="acts"><span class="locked">🔒 비밀번호를 넣으면 열려요</span></div></div>
+    </article>
+    <article class="gift" data-gift="g5">
+      <div class="cover" aria-hidden="true"><span class="k">BENEFIT 05</span><span class="t">소문설계 AI 프롬프트 9종</span><span class="y">2027</span></div>
+      <div><h3>소문설계 AI 프롬프트 9종</h3><p>ChatGPT·Claude·Gemini에 복사해 붙여 넣는 단계별 프롬프트. 마지막 혜택 '차용하기·갈라치기' 포함</p><div class="acts"><span class="locked">🔒 비밀번호를 넣으면 열려요</span></div></div>
+    </article></div>
+
+  <section class="course">
+    <h2>제갈현열의 금낭비책 : 소문설계 2기</h2>
+    <ul><li>11월 18일(수) 개강 · 매주 수요일 오후 2시~6시 · 4주</li><li>용산 인근 · 정원 30명 (5명씩 6개 조)</li><li>수강료 200만원</li></ul>
+    <p class="note">신청 링크는 라이브에서 안내드립니다.</p>
+  </section>
+
+  <footer>
+    <p>선물함은 11월 16일(월)까지 열려 있습니다.</p>
+    <p>이 선물은 라이브 참석자 본인만 사용할 수 있습니다. 자료의 저작권은 제갈현열 작가와 더장사에 있으며 무단 공유·재배포를 금합니다.</p>
+    <p>더장사 액션아카데미</p>
+  </footer>
+</div>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="vt">
+  <div class="vbar"><button class="ghost" id="vclose" type="button">← 목록</button><div class="vt" id="vt"></div><button class="ghost" id="vsave" type="button" hidden>PDF 저장</button></div>
+  <div class="vbody" id="vbody"></div>
+</div>
+
+<script>
+const CFG = {"closed":false,"allow_download":true};
+const $ = (s) => document.querySelector(s);
+let META = null, BIN = null, pdfjsReady = null;
+
+// PDF 저장 경로 — claude.ai 아티팩트 안이면 downloads 기능(보는 사람이 확인 창에서 '저장'을 누름),
+// 일반 호스팅이면 브라우저 다운로드. 아티팩트인데 기능을 못 쓰면(null) 저장 버튼을 숨긴다.
+const inArtifact = !!(window.claude && typeof window.claude.use === "function");
+const downloadsP = inArtifact ? window.claude.use("downloads").catch(() => null) : Promise.resolve(null);
+
+// 생성기(build_giftbox.mjs)와 같은 규칙: NFC → 공백 제거 → 소문자
+const norm = (s) => s.normalize("NFC").replace(/\s+/g, "").toLowerCase();
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+
+async function decrypt(pw) {
+  const res = await fetch("gifts.json", { cache: "no-store" });
+  if (!res.ok) throw new Error("load");
+  const B = await res.json();
+  if (B.closed) throw new Error("closed");
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(norm(pw)), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey({ name: "PBKDF2", hash: "SHA-256", salt: b64(B.salt), iterations: B.iter }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+  let buf;
+  try { buf = new Uint8Array(await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(B.iv) }, key, b64(B.ct))); }
+  catch (e) { throw new Error("wrong"); }
+  const L = new DataView(buf.buffer).getUint32(0);
+  return { meta: JSON.parse(new TextDecoder().decode(buf.subarray(4, 4 + L))), bin: buf.subarray(4 + L) };
+}
+
+function loadPdfjs() {
+  if (!pdfjsReady) pdfjsReady = new Promise((ok, no) => {
+    const s = document.createElement("script");
+    s.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+    s.onload = () => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"; ok(window.pdfjsLib); };
+    s.onerror = () => { pdfjsReady = null; no(new Error("pdfjs")); };
+    document.head.appendChild(s);
+  });
+  return pdfjsReady;
+}
+
+$("#unlock").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const pw = $("#pw").value;
+  const msg = $("#msg");
+  if (!norm(pw)) { msg.className = "msg err"; msg.textContent = "비밀번호를 넣어 주세요."; return; }
+  if (CFG.closed) { msg.className = "msg err"; msg.textContent = "선물 제공 기간이 끝났어요."; return; }
+  $("#go").disabled = true; msg.className = "msg"; msg.textContent = "여는 중이에요…";
+  try {
+    const r = await decrypt(pw);
+    META = r.meta; BIN = r.bin;
+    unlockCards();
+    msg.className = "msg ok"; msg.textContent = "선물이 열렸어요. 아래에서 하나씩 열어 보세요.";
+    loadPdfjs().catch(() => {});
+    $("#gifts").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  } catch (err) {
+    msg.className = "msg err";
+    msg.textContent = err.message === "wrong" ? "비밀번호가 맞지 않아요. 라이브 화면의 비밀번호를 다시 확인해 주세요."
+      : err.message === "closed" ? "선물 제공 기간이 끝났어요."
+      : "선물을 불러오지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.";
+  } finally { $("#go").disabled = false; }
+});
+
+function unlockCards() {
+  $("#giftsub").textContent = "선물이 열렸어요. 인쇄해서 펜으로 쓰시면 가장 좋아요.";
+  for (const g of META.gifts) {
+    const card = document.querySelector(`[data-gift="${g.id}"]`);
+    if (!card) continue;
+    const acts = card.querySelector(".acts");
+    acts.innerHTML = "";
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn";
+    if (g.kind === "pdf") { b.textContent = "PDF 열기"; b.onclick = () => openPdf(g); }
+    else if (g.kind === "prompts") { b.textContent = "프롬프트 보기"; b.onclick = () => openPrompts(g); }
+    acts.appendChild(b);
+    card.classList.add("open");
+  }
+}
+
+// 보기 창 — 열 때 history 에 한 칸 넣어 휴대폰 뒤로 가기가 목록으로 돌아오게 한다
+let viewerOpen = false;
+function showViewer(title) {
+  $("#vt").textContent = title; $("#vbody").innerHTML = ""; $("#vsave").hidden = true;
+  $("#viewer").hidden = false; document.body.style.overflow = "hidden"; viewerOpen = true;
+  history.pushState({ v: 1 }, "");
+  $("#vclose").focus();
+}
+function hideViewer(fromPop) {
+  if (!viewerOpen) return;
+  viewerOpen = false; $("#viewer").hidden = true; document.body.style.overflow = ""; $("#vbody").innerHTML = "";
+  if (!fromPop) history.back();
+}
+$("#vclose").onclick = () => hideViewer(false);
+addEventListener("popstate", () => hideViewer(true));
+addEventListener("keydown", (e) => { if (e.key === "Escape") hideViewer(false); });
+
+async function openPdf(g) {
+  showViewer(g.title);
+  const body = $("#vbody");
+  const bytes = BIN.slice(g.offset, g.offset + g.length);
+  if (CFG.allow_download) {
+    const sv = $("#vsave");
+    const dl = await downloadsP;
+    if (!inArtifact || dl) {
+      sv.hidden = false; sv.textContent = "PDF 저장"; sv.disabled = false;
+      sv.onclick = async () => {
+        const blob = new Blob([bytes], { type: "application/pdf" });
+        if (dl) {
+          sv.disabled = true;
+          try { await dl.save({ filename: g.name, data: blob }); sv.textContent = "저장했어요"; }
+          catch (e) {
+            if (e && e.code === "declined") sv.textContent = "PDF 저장";
+            else if (e && e.code === "rate_limited") sv.textContent = "잠시 후 다시";
+            else { sv.hidden = true; }
+          } finally { sv.disabled = false; }
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a"); a.href = url; a.download = g.name; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+      };
+    }
+  }
+  body.innerHTML = '<div class="status">불러오는 중이에요…</div>';
+  try {
+    const lib = await loadPdfjs();
+    const doc = await lib.getDocument({ data: bytes.slice() }).promise;
+    if (!viewerOpen) return;
+    body.innerHTML = "";
+    const w = Math.min(body.clientWidth - 16, 900);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    for (let i = 1; i <= doc.numPages; i++) {
+      const page = await doc.getPage(i);
+      if (!viewerOpen) return;
+      const vp1 = page.getViewport({ scale: 1 });
+      const vp = page.getViewport({ scale: (w / vp1.width) * dpr });
+      const c = document.createElement("canvas");
+      c.width = vp.width; c.height = vp.height; c.style.width = w + "px";
+      c.setAttribute("aria-label", `${g.title} ${i}쪽`);
+      body.appendChild(c);
+      await page.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
+    }
+  } catch (e) {
+    body.innerHTML = '<div class="status">PDF를 화면에 그리지 못했어요.' + (!$("#vsave").hidden ? ' 위의 PDF 저장 버튼으로 받아서 열어 주세요.' : ' 다른 브라우저로 다시 열어 주세요.') + "</div>";
+  }
+}
+
+function openPrompts(g) {
+  showViewer(g.title);
+  const list = document.createElement("div"); list.className = "plist";
+  const intro = document.createElement("p"); intro.className = "sub"; intro.style.margin = "4px 0 14px";
+  intro.textContent = "복사해서 ChatGPT, Claude, Gemini 어디에든 붙여 넣으세요. [대괄호] 칸만 우리 가게 내용으로 바꾸면 됩니다.";
+  list.appendChild(intro);
+  const dec = new TextDecoder();
+  for (const d of g.docs) {
+    const text = dec.decode(BIN.subarray(d.offset, d.offset + d.length));
+    const item = document.createElement("article"); item.className = "pitem";
+    const head = document.createElement("header");
+    const h = document.createElement("div");
+    const h4 = document.createElement("h4"); h4.textContent = d.title;
+    const sm = document.createElement("small"); sm.textContent = d.note;
+    h.append(h4, sm);
+    const cp = document.createElement("button"); cp.type = "button"; cp.className = "ghost"; cp.textContent = "복사";
+    const pre = document.createElement("pre"); pre.textContent = text;
+    cp.onclick = async () => {
+      try { await navigator.clipboard.writeText(text); cp.textContent = "복사됨"; }
+      catch (e) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); cp.textContent = "길게 눌러 복사"; }
+      setTimeout(() => (cp.textContent = "복사"), 1800);
+    };
+    head.append(h, cp); item.append(head, pre); list.appendChild(item);
+  }
+  $("#vbody").appendChild(list);
+}
+</script>
+</body>
+</html>
